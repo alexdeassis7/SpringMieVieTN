@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+">
+
+	<bean id="miEmpleado" class="com.eduit.DirectorEmpleado"
+		scope="singleton">
+		<constructor-arg ref="miInforme"></constructor-arg>
+	</bean>
+
+	<!-- utilizamos patron singleton y prototype -->
+	<bean id="miSecretarioEmpleado" class="com.eduit.SecretarioEmpleado" scope="prototype">
+	
+	<!-- el tag property es para utilizar la inyeccion de dependencias con un 
+		setters -->
+		<property name="informeNuevo" ref="miInforme"></property>
+	</bean>
+
+	<!-- creamos un bean para la "inyeccion de dependencia" -->
+	<bean id="miInforme" class="com.eduit.Informe">
+	</bean>
+
+</beans>
