@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- le indicamos el paquete que debera escanear en busca de componentes -->
+	<context:component-scan
+		base-package="com.educacionit.mvc"></context:component-scan>
+
+	<!-- este tag en esencia lo que establece es el contexto de spring para -->
+	<!-- permitir el envio de solicitudes al los controladores , internamente 
+		configurará dos beans que son los siguientes: DEfaultAnnotationHandlerMApping 
+		y AnnotationMethodHandlerAdapter -->
+	<!-- para mayor informacion leer el siguiente link -->
+	<!-- http://static.springsource.org/spring/docs/current/spring-framework-reference/html/mvc.html -->
+
+	<mvc:annotation-driven />
+
+	<!-- configuramos el view resolver , aqui es donde le decimos a el servidor 
+		de servlets coo debe -->
+	<!-- resolver las url´s de las vistas -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<!-- las vistas estaran por convencion en una carpeta llamada vistas o 
+			view -->
+		<property name="prefix" value="/WEB-INF/vista/"></property>
+
+		<!-- defino el sufijo que es la extension que tendran nuestras vistas -->
+		<property name="suffix" value=".jsp"></property>
+
+	</bean>
+
+
+
+</beans>

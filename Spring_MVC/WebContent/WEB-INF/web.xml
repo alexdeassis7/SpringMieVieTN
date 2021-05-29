@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Spring_MVC</display-name>
+	<absolute-ordering />
+
+	<!-- configuracion del dispatcher Servlet , este seria nuestro servidor 
+		de servlet, -->
+	<!-- el name "dispacher" no es mas que una convencion -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<!-- aqui le indicamos la clase que debe utilizar nuestro dispatcher servlet -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- estos dos param deben coincidir con el nombre que tiene nuestro xml 
+				de configuracion de spring -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring_mvc_servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- ubicacion del servlet -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<!-- aqui con la barra le indicamos que partiendo desde la carpeta WEB 
+			INF el servlet se encuentra en la raiz -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
